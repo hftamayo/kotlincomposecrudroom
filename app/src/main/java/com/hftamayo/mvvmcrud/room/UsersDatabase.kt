@@ -10,5 +10,6 @@ import com.hftamayo.mvvmcrud.models.Users
     exportSchema = false
 )
 abstract class UsersDatabase: RoomDatabase() {
+    abstract fun usersDao(): UsersDatabaseDao
 
 }
