@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.hftamayo.mvvmcrud.viewmodels.UsersViewModel
+import com.hftamayo.mvvmcrud.views.AddView
+import com.hftamayo.mvvmcrud.views.HomeView
 
 @Composable
 fun NavManager(viewModel: UsersViewModel){
