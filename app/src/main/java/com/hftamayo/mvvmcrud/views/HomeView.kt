@@ -1,13 +1,12 @@
 package com.hftamayo.mvvmcrud.views
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -49,18 +48,36 @@ fun HomeView(navController: NavController, viewModel: UsersViewModel) {
 }
 
 @Composable
-fun ContentHomeView(it: PaddingValues, navController: NavController, viewModel: UsersViewModel){
+fun ContentHomeView(it: PaddingValues, navController: NavController, viewModel: UsersViewModel) {
     val state = viewModel.state
 
     Column(
         modifier = Modifier.padding(it)
     ) {
-        LazyColumn{
-            items(state.listUsers){
+        LazyColumn {
+            items(state.listUsers) {
                 Box(
-                    modifier = Modifier.padding(8.dp)
-                ){
-
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth()
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .padding(12.dp)
+                    ) {
+                        Text(text = it.user)
+                        Text(text = it.email)
+                        IconButton(
+                            onClick = { navController.navigate("edit/${it.id}/${it.user}/${it.email}") }
+                        ) {
+                            Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
+                        }
+                        IconButton(
+                            onClick = { viewModel.deleteUser(it) }
+                        ) {
+                            Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete")
+                        }
+                    }
                 }
             }
         }
