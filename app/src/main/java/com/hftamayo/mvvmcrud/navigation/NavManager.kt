@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.hftamayo.mvvmcrud.viewmodels.UsersViewModel
 import com.hftamayo.mvvmcrud.views.AddView
+import com.hftamayo.mvvmcrud.views.EditView
 import com.hftamayo.mvvmcrud.views.HomeView
 
 @Composable
@@ -32,8 +33,8 @@ fun NavManager(viewModel: UsersViewModel){
                 navController,
                 viewModel,
                 it.arguments!!.getInt("id"),
-                it.arguments!!.getString("user"),
-                it.arguments!!.getString("email")
+                it.arguments?.getString("user"),
+                it.arguments?.getString("email")
             )
         }
     }
