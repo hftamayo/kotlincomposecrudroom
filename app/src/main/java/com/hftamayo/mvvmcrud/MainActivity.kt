@@ -10,7 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
+import androidx.room.Room
+import com.hftamayo.mvvmcrud.navigation.NavManager
+import com.hftamayo.mvvmcrud.room.UsersDatabase
 import com.hftamayo.mvvmcrud.ui.theme.MvvmcrudTheme
+import com.hftamayo.mvvmcrud.viewmodels.UsersViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,22 +27,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val database = Room.databaseBuilder(this, UsersDatabase::class.java, "db_users").build()
+                    val dao = database.usersDao()
+
+                    val viewModel = UsersViewModel(dao)
+                    NavManager(viewModel = viewModel)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MvvmcrudTheme {
-        Greeting("Android")
     }
 }
