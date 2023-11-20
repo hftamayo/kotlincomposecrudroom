@@ -13,10 +13,10 @@ interface UsersDatabaseDao {
     @Query("SELECT * FROM users WHERE id = :id")
     fun getUser(id: Int): Flow<Users>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addUser(user: Users)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateUser(user: Users)
 
     @Delete
