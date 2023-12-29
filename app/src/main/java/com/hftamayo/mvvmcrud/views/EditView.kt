@@ -44,6 +44,7 @@ fun EditView(navController: NavController, viewModel: UsersViewModel, id: Int, u
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContentEditView(it: PaddingValues, navController: NavController, viewModel: UsersViewModel, id: Int, user: String?, email: String?) {
     var user by remember { mutableStateOf(user) }

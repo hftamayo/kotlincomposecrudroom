@@ -45,6 +45,7 @@ fun AddView(navController: NavController, viewModel: UsersViewModel) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContentAddView(it: PaddingValues, navController: NavController, viewModel: UsersViewModel) {
     var user by remember { mutableStateOf("") }
