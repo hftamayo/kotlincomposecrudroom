@@ -23,6 +23,12 @@
 
 ![create function](./sshots/05.png)
 
+6. Recommended type of testing:
+- Unit Testing
+- Integration Testing
+- UI Testing
+- E2E Testing
+
 
 ## References ##
 [original tutorial](https://www.youtube.com/watch?v=XbV2NwYIeXg&list=PLsQR_Tmsj29nyIzmG0EcCJsvLQC3ze6H0&index=2&t=1348s)
